@@ -1,6 +1,8 @@
 
 var magazineModel = new Magazine();
 magazineModel.set('title', 'Screaming Zebras');
+magazineModel.set('pubDate', '2/4');
+magazineModel.set('image', 'img/zebra.jpg');
 
 var magazineView = new MagazineView({
   model: magazineModel
