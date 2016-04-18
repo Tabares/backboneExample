@@ -1,4 +1,10 @@
-var Magazine = Backbone.Model.extend({
+var MagazineView = Backbone.View.extend({
+
+});
+
+var magazineView1 = new MagazineView();
+console.log(magazineView1.el)
+/*var Magazine = Backbone.Model.extend({
   defaults: {
     title: '',
     pubDate: '1/1'
@@ -18,7 +24,7 @@ console.log("Title has been set:"+magazine1.get("title"));
 
 magazine1.set("pubDate", "1/2");
 console.log("Pubdate has been set:"+magazine1.get("pubDate"));
-
+*/
 /*var Magazine = Backbone.Model.extend({});
 
 var magazine = new Magazine();
