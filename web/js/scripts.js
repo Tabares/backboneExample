@@ -1,5 +1,7 @@
 var MagazineView = Backbone.View.extend({
-
+  tagName: "ul",
+  id: "theList",
+  className: "list"
 });
 
 var magazineView1 = new MagazineView();
