@@ -1,4 +1,25 @@
-var Magazine = Backbone.Model.extend({});
+var Magazine = Backbone.Model.extend({
+  defaults: {
+    title: '',
+    pubDate: '1/1'
+  },
+  initialize: function(){
+    console.log("The model has been initialize");
+    this.on("change", function(){
+      console.log("The model's data has been change");
+    })
+  }
+});
+
+var magazine1 = new Magazine();
+
+magazine1.set("title", "Screaming Zebras");
+console.log("Title has been set:"+magazine1.get("title"));
+
+magazine1.set("pubDate", "1/2");
+console.log("Pubdate has been set:"+magazine1.get("pubDate"));
+
+/*var Magazine = Backbone.Model.extend({});
 
 var magazine = new Magazine();
 console.log(JSON.stringify(magazine));
@@ -7,7 +28,6 @@ var magazine1 = new Magazine({
   title: "Screaming Zebras"
 });
 console.log(JSON.stringify(magazine1));
-
 
 var Magazine1 = Backbone.Model.extend({
   defaults: {
@@ -36,3 +56,4 @@ console.log("Magazine 1 title: " + magazine4.get("title") );
 var magazine5 = new Magazine1();
 magazine5.set("title", "Sobrero Monthly");
 console.log("Magazine 1 title: " + magazine5.get("title") );
+*/
