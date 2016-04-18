@@ -1,11 +1,36 @@
-var MagazineView = Backbone.View.extend({
-  tagName: "ul",
-  id: "theList",
-  className: "list"
+var Magazine = Backbone.Model.extend({
+  defaults: {
+    title: '',
+    pubDate: '1/1'
+  },
+  initialize: function(){
+    console.log("The model has been initialize");
+    this.on("change:title", function(){
+      console.log("The model's data has been change");
+    })
+  }
 });
 
-var magazineView1 = new MagazineView();
-console.log(magazineView1.el)
+var MagazineView = Backbone.View.extend({
+  render: function () {
+    var markup = '<h1>' +this.model.get("title")+ '</h1>';
+    this.$el.html(markup);
+    return this;
+  }
+});
+
+var magazineModel = new Magazine();
+magazineModel.set('title', 'Screaming Zebras');
+
+var magazineView = new MagazineView({
+  model: magazineModel
+});
+
+$(document).ready(function(){
+  $("#theList").html(magazineView.render().el);
+});
+
+
 /*var Magazine = Backbone.Model.extend({
   defaults: {
     title: '',
