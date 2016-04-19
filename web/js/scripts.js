@@ -1,17 +1,22 @@
 
 var MagazineRouter = Backbone.Router.extend({
   routes: {
+    "" : "listPage",
     "title/:id" : "showTitle"
   },
   showTitle : function(id) {
     $("#theList").html("Title: " + id);
     console.log("The page is being visited");
+  },
+  listPage : function(id){
+    $("#theList").html("list Page ");
+
+
   }
 });
 
 var router = new MagazineRouter();
 
-Backbone.history.start();
 
 
 var magazineModel = new Magazine();
@@ -65,6 +70,7 @@ var magazineView = new MagazineView({
 });
 
 $(document).ready(function(){
+  Backbone.history.start();
   $("#theList").html(magazineView.render().el);
 });
 
