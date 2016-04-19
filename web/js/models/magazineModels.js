@@ -11,3 +11,7 @@ var Magazine = Backbone.Model.extend({
     })
   }
 });
+
+var MagazineCollection = Backbone.Collection.extend({
+  model: Magazine
+});

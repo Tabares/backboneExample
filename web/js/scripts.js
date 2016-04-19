@@ -4,6 +4,47 @@ magazineModel.set('title', 'Screaming Zebras');
 magazineModel.set('pubDate', '2/4');
 magazineModel.set('image', 'img/zebra.jpg');
 
+var zebras = new Magazine({title: "Screaming Zebras", pubDate: "2/4", image : 'img/zebra.jpg' });
+var sombrero = new Magazine({title: "Sombrero Monthly", pubDate: "2/14", image : 'img/zebra.jpg' });
+var carousel = new Magazine({title: "Carousel Lovers", pubDate: "3/1", image : 'img/zebra.jpg' });
+
+
+var magazines = new MagazineCollection([zebras, sombrero, carousel]);
+console.log(magazines.length);
+var alphaSort = magazines.sortBy(function(magazine){
+  return magazine.get("title");
+})
+
+magazines.forEach(function(model){
+  console.log(model.get("title"));
+});
+alphaSort.forEach(function(model){
+  console.log(model.get("title"));
+});
+
+var count = 1;
+
+var numberedList = magazines.map(function(model){
+  return count++ + ". " + model.get("title");
+});
+
+console.log(numberedList);
+
+var titles = magazines.pluck("title");
+$.each(titles, function(index, value){
+  console.log(value)
+});
+
+var count2 = 1;
+var sortedMap = magazines.chain()
+  .sortBy(function(model){return model.get("title");})
+  .map(function(model){return count2++ + ". " + model.get("title");})
+  .value();
+
+$.each(sortedMap, function(index, value){
+  console.log(value);
+})
+
 var magazineView = new MagazineView({
   model: magazineModel
 });
