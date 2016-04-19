@@ -1,4 +1,19 @@
 
+var MagazineRouter = Backbone.Router.extend({
+  routes: {
+    "title/:id" : "showTitle"
+  },
+  showTitle : function(id) {
+    $("#theList").html("Title: " + id);
+    console.log("The page is being visited");
+  }
+});
+
+var router = new MagazineRouter();
+
+Backbone.history.start();
+
+
 var magazineModel = new Magazine();
 magazineModel.set('title', 'Screaming Zebras');
 magazineModel.set('pubDate', '2/4');
